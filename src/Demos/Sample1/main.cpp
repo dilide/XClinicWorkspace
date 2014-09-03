@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 //	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("GB2312"));
 
 
+
 	//¶ÁÈ¡Êý¾Ý
 	QFile file("D:\\1.dat");
 	file.open(QFile::ReadOnly);
