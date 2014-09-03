@@ -1,5 +1,7 @@
 
 #include "MainWindow.h"
+#include <QPainter>
+#include <QWheelEvent>
 
 CMainWindow::CMainWindow()
 	: m_pImage(NULL)

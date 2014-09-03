@@ -1,7 +1,7 @@
-#include <QApplication>
 #include <iostream>
-#include <QtGui>
 #include "MainWindow.h"
+#include <QApplication>
+#include <QFile>
 
 #define PIXEL_SIZE	144
 
@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("GB2312"));
+//	QTextCodec::setCodecForTr(QTextCodec::codecForName("GB2312"));
+//	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("GB2312"));
 
 
 	//¶ÁÈ¡Êý¾Ý

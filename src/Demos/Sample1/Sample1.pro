@@ -1,6 +1,8 @@
-TARGET = XClinicWorkspace
+TARGET = Sample1
 TEMPLATE = app
-DESTDIR = "../bin"
+
+release:DESTDIR = "../../../bin"
+debug:DESTDIR = "../../../debug"
 
 CONFIG += qt debug_and_release
 CONFIG(debug,debug|release) {
@@ -13,6 +15,7 @@ CONFIG(debug,debug|release) {
 QT += core \
     gui
 	
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 PRECOMPILED_HEADER = StdAfx.h
 
