@@ -23,3 +23,11 @@ PRECOMPILED_HEADER = StdAfx.h
 HEADERS += StdAfx.h MainWindow.h
 
 SOURCES += main.cpp MainWindow.cpp 
+
+INCLUDEPATH += "../../../include/"
+INCLUDEPATH += "../../xe/"
+
+release:LIBS += -L"../../../bin"
+debug:LIBS += -L"../../../debug"
+
+LIBS += -lXEngine
