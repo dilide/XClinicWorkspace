@@ -14,5 +14,6 @@
 
 #define	FLOAT_NAN	(std::numeric_limits<float>::quiet_NaN())
 #define RSTOCK_VER	1
+#define XE_LIBRARY
 
 #endif // !defined(AFX_STDAFX_H__61A31CEB_9707_11D1_ACAB_0000E823DBFD__INCLUDED_)

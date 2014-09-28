@@ -89,31 +89,16 @@ int main(int argc, char *argv[])
 	xe::Dicom::DicomReader* m_pDcmReader = new xe::Dicom::DicomReader();
 	if (m_pDcmReader->OpenDicoms(listDcms))
 	{
+		CMainWindow w;
+		w.SetImageData(m_pDcmReader->GetImageData());
+		w.show();
 
+		app.exec();
+
+		delete m_pDcmReader;
+		return 1;
 	}
 
+	delete m_pDcmReader;
 	return -1;
-	//读取数据
-	QFile file("D:\\1.dat");
-	file.open(QFile::ReadOnly);
-	QByteArray all = file.readAll();
-	char* pData = all.data();
-
-	//获取最大值和最小值
-	g_pImageData = (int*)(pData);
-
-	//生成所有的图像
-
-	//显示图像
-	CMainWindow w;
-//	RImageData<int>* pImage = new RImageData<int>(g_pImageData, PIXEL_SIZE, PIXEL_SIZE, VOX_LAYER);
-//	w.SetImageData(pImage);
-	w.show();
-
-	app.exec();
-
-
-	//清理内存
-
-	return 1;
 }

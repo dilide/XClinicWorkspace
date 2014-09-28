@@ -17,10 +17,12 @@ CONFIG(debug,debug|release) {
 # PRECOMPILED_HEADER = ../../include/common.h
 
 HEADERS += Dicom/DicomReader.h \
-		Image\ImageBase.h Image\ImageData.h
+		Image\ImageBase.h Image\ImageData.h Image\ImageLayer.h \
+		Math\Math.h
 
 SOURCES += Dicom/DicomReader.cpp \
-		Image\ImageBase.cpp Image\ImageData.cpp
+		Image\ImageBase.cpp Image\ImageData.cpp Image\ImageLayer.cpp \
+		Math\Math.cpp
 
 INCLUDEPATH += "../../include/"
 INCLUDEPATH += "E:/Projects/Common/opencv/build/include/"

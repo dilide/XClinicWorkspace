@@ -20,7 +20,7 @@ public:
 public:
 	bool OpenDicoms(const std::list<std::string>& dcms);
 	bool Release();
-
+	xe::Image::ImageBase* GetImageData(){ return m_pImageData; }
 
 private:
 	xe::Image::ImageBase* m_pImageData;

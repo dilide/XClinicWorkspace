@@ -2,59 +2,7 @@
 #define MAIN_WINDOW_H
 
 #include <QtWidgets>
-#include <omp.h>
-
-#if defined(ENABLE_OPENMP)
-#else
-typedef int omp_int_t;
-inline omp_int_t omp_get_thread_num() { return 0;}
-inline omp_int_t omp_get_max_threads() { return 1;}
-#endif
-
-template<typename T>
-bool getMinAndMax(T* pData, int count, T& min, T& max)
-{
-	min = *pData;
-	max = *pData;
-
-	int coreNum = omp_get_max_threads();//获得处理器个数
-	T* minArray = new T[coreNum];//对应处理器个数，先生成一个数组
-	T* maxArray = new T[coreNum];
-	for (int i = 0; i < coreNum; ++i)
-	{
-		minArray[i] = *pData;
-		maxArray[i] = *pData;
-	}
-
-
-#pragma omp parallel for
-	for (int i = 0; i<count; ++i)
-	{
-		int k = omp_get_thread_num();
-		if (pData[i] > maxArray[k])
-		{
-			maxArray[k] = pData[i];
-		}
-		if (pData[i] < minArray[k])
-		{
-			minArray[k] = pData[i];
-		}
-	}
-
-
-	for (int i = 0; i < coreNum; ++i)
-	{
-		if (max < maxArray[i])
-			max = maxArray[i];
-		if (min > minArray[i])
-			min = minArray[i];
-	}
-
-	delete maxArray;
-	delete minArray;
-
-	return true;
-}
+#include <Dicom\DicomReader.h>
 
 
 
@@ -94,9 +42,9 @@ public:
 	CMainWindow();
 	~CMainWindow();
 
-	void SetImageData(RImageData<int>* p)
+	void SetImageData(xe::Image::ImageBase* p)
 	{
-		m_pImage = p;
+		m_pImage = reinterpret_cast<xe::Image::ImageData<short>*>(p);
 	}
 
 public:
@@ -104,10 +52,9 @@ public:
 	virtual void wheelEvent(QWheelEvent* e);
 
 private:
-	RImageData<int>* m_pImage;
+	xe::Image::ImageData<short>* m_pImage;
 	int m_iLayer;
 	QVector<QRgb> m_clrTable;
-	QImage* m_pImg;
 
 	int m_iImageSize;
 };

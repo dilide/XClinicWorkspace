@@ -19,6 +19,8 @@ public:
 
 	char* GetDataPtr(){ return m_pData; }
 
+	virtual void UpdateData() = 0;
+
 protected:
 	char* m_pData;
 	int m_iSize;
