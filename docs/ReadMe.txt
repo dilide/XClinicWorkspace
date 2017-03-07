@@ -1,1 +1,2 @@
 XClinicWorkspace
+test
